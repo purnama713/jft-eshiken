@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('session_code')->unique();
             $table->integer('num_of_question');
             $table->enum('timer_type', ['none', 'per_question', 'per_quiz'])->default('none');
             $table->integer('timer_duration')->nullable();
